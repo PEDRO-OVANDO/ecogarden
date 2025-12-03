@@ -1,0 +1,230 @@
+/* ===== RESPONSIVE FOOTER ===== */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .footer {
+        padding: 2.5rem 0 1rem;
+    }
+    
+    .footer-content {
+        gap: 1.75rem;
+        margin-bottom: 1.75rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.875rem;
+    }
+    
+    .footer-section p,
+    .footer-section a {
+        font-size: 0.95rem;
+    }
+}
+
+/* Móviles grandes (576px - 768px) */
+@media (max-width: 768px) {
+    .footer {
+        padding: 2rem 0 1rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .footer-section:first-child {
+        grid-column: 1 / -1;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 1.5rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .footer-section p,
+    .footer-section a {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .logo {
+        justify-content: center;
+        margin-bottom: 0.75rem;
+    }
+    
+    .footer-bottom {
+        padding-top: 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Móviles pequeños (< 576px) */
+@media (max-width: 576px) {
+    .footer {
+        padding: 1.5rem 0 0.75rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-bottom: 1.25rem;
+        text-align: center;
+    }
+    
+    .footer-section:first-child {
+        grid-column: 1;
+        padding-bottom: 1.25rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 1rem;
+        margin-bottom: 0.625rem;
+    }
+    
+    .footer-section p,
+    .footer-section a {
+        font-size: 0.85rem;
+        margin-bottom: 0.35rem;
+    }
+    
+    .footer-section p {
+        line-height: 1.5;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+        margin-bottom: 0.625rem;
+    }
+    
+    .footer-bottom {
+        padding-top: 1.25rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Mejorar espaciado en nombres del equipo */
+    .footer-section:first-child p {
+        line-height: 1.6;
+    }
+}
+
+/* Mejoras específicas para elementos táctiles */
+@media (max-width: 768px) {
+    .footer-section a {
+        padding: 0.25rem 0;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s;
+    }
+    
+    .footer-section a:active {
+        background-color: rgba(255,255,255,0.1);
+        border-radius: 4px;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 380px) {
+    .footer {
+        padding: 1.25rem 0 0.5rem;
+    }
+    
+    .footer-content {
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-section:first-child {
+        padding-bottom: 1rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 0.95rem;
+    }
+    
+    .footer-section p,
+    .footer-section a {
+        font-size: 0.8rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .footer-bottom {
+        padding-top: 1rem;
+    }
+}
+
+/* Mejoras de legibilidad en móviles */
+@media (max-width: 768px) {
+    .footer-section p {
+        line-height: 1.5;
+    }
+    
+    /* Iconos más grandes en móviles */
+    .footer-section i {
+        font-size: 1.1rem;
+        margin-right: 0.5rem;
+    }
+}
+
+/* Estados hover/active mejorados para móviles */
+@media (max-width: 768px) {
+    .footer-section a {
+        transition: all 0.2s ease;
+    }
+    
+    .footer-section a:active {
+        transform: scale(0.98);
+        background-color: rgba(255,255,255,0.15);
+    }
+}
+
+/* Optimización para orientación landscape en móviles */
+@media (max-height: 500px) and (max-width: 768px) {
+    .footer {
+        padding: 1rem 0 0.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-section:first-child {
+        grid-column: 1;
+        border-bottom: none;
+        padding-bottom: 0;
+        text-align: left;
+    }
+}
+
+/* Ajustes de contraste y accesibilidad */
+@media (max-width: 768px) {
+    .footer {
+        background: #1a4516; /* Versión más oscura para mejor contraste */
+    }
+    
+    .footer-section a:hover,
+    .footer-section a:focus {
+        color: #a8d8a5; /* Color más claro para mejor visibilidad */
+    }
+}
+
+/* Soporte para modo oscuro del sistema */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+    .footer {
+        background: #1a3a1a;
+    }
+}

@@ -1,0 +1,551 @@
+/* ===== RESPONSIVE GESTIONAR PRODUCTOS ADMIN ===== */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .admin-main {
+        margin: 1.5rem auto;
+        padding: 0 15px;
+    }
+    
+    .form-section, 
+    .list-section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .table th, 
+    .table td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+    
+    .tabla-scroll {
+        max-height: 400px;
+    }
+    
+    .btn-primary,
+    .Dbtn-cancel {
+        min-width: 160px;
+        padding: 10px 20px;
+    }
+    
+    .imagen-preview {
+        max-width: 150px;
+        max-height: 150px;
+    }
+    
+    /* Imágenes en tabla para tablets */
+    .table img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+    }
+}
+
+/* Móviles grandes (576px - 768px) */
+@media (max-width: 768px) {
+    .admin-nav {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 0 15px;
+    }
+    
+    .admin-main {
+        margin: 1rem auto;
+        padding: 0 10px;
+    }
+    
+    .form-section, 
+    .list-section {
+        padding: 1.25rem;
+        margin: 0 0.25rem 1.25rem 0.25rem;
+    }
+    
+    .form-section h2,
+    .list-section h2 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    /* Formulario responsivo */
+    .form-section > form > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem;
+    }
+    
+    .form-control {
+        padding: 12px;
+        font-size: 16px; /* Previene zoom en iOS */
+    }
+    
+    .checkbox-group {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .form-group .btn-primary,
+    .form-group .Dbtn-cancel {
+        width: 100%;
+        margin: 0.5rem 0;
+        display: block;
+    }
+    
+    /* Imágenes en formulario */
+    .imagen-preview {
+        max-width: 120px;
+        max-height: 120px;
+    }
+    
+    .imagen-actual {
+        max-width: 80px;
+        max-height: 80px;
+    }
+    
+    /* Tabla responsiva - MANTENER IMAGEN VISIBLE */
+    .tabla-scroll {
+        max-height: 500px;
+        border: none;
+        margin-top: 0.5rem;
+        overflow-x: auto;
+    }
+    
+    .table {
+        font-size: 0.85rem;
+        min-width: 600px; /* Forzar scroll horizontal en móviles */
+    }
+    
+    .table th, 
+    .table td {
+        padding: 8px 6px;
+        white-space: nowrap; /* Evitar que el texto se rompa */
+    }
+    
+    /* IMAGEN: Mantener visible pero más pequeña */
+    .table th:nth-child(1),
+    .table td:nth-child(1) {
+        display: table-cell !important; /* Forzar visibilidad */
+        min-width: 50px;
+        max-width: 60px;
+    }
+    
+    .table img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 4px;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    /* Ocultar columnas menos importantes en móviles */
+    .table th:nth-child(5),  /* Categoría */
+    .table td:nth-child(5) {
+        display: none;
+    }
+    
+    .table th:nth-child(6),  /* Tipo */
+    .table td:nth-child(6) {
+        display: none;
+    }
+    
+    .actions {
+        flex-direction: column;
+        gap: 0.25rem;
+        min-width: 100px;
+    }
+    
+    .btn-edit,
+    .btn-delete {
+        width: 100%;
+        text-align: center;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .badge {
+        font-size: 0.75rem;
+        padding: 3px 6px;
+    }
+    
+    .alert {
+        padding: 0.875rem;
+        font-size: 0.9rem;
+        margin: 0 0.25rem 1rem 0.25rem;
+    }
+}
+
+/* Móviles pequeños (< 576px) */
+@media (max-width: 576px) {
+    .admin-header {
+        padding: 0.75rem 0;
+    }
+    
+    .admin-nav {
+        gap: 0.75rem;
+        padding: 0 10px;
+    }
+    
+    .admin-nav h1 {
+        font-size: 1.3rem;
+    }
+    
+    .admin-main {
+        margin: 0.75rem auto;
+        padding: 0 5px;
+    }
+    
+    .form-section, 
+    .list-section {
+        padding: 1rem;
+        margin: 0 0.125rem 1rem 0.125rem;
+    }
+    
+    .form-section h2,
+    .list-section h2 {
+        font-size: 1.2rem;
+    }
+    
+    .form-label {
+        font-size: 0.9rem;
+        margin-bottom: 0.375rem;
+    }
+    
+    .form-control {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .info-imagen {
+        font-size: 0.75rem;
+    }
+    
+    .checkbox-group {
+        font-size: 0.9rem;
+    }
+    
+    .btn-primary,
+    .Dbtn-cancel {
+        min-width: auto;
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+    
+    /* Imágenes en móviles pequeños */
+    .imagen-preview {
+        max-width: 100px;
+        max-height: 100px;
+    }
+    
+    .imagen-actual {
+        max-width: 60px;
+        max-height: 60px;
+    }
+    
+    /* Tabla en móviles pequeños */
+    .tabla-scroll {
+        max-height: 400px;
+        margin-top: 0.25rem;
+    }
+    
+    .table {
+        font-size: 0.8rem;
+        min-width: 550px;
+    }
+    
+    .table th, 
+    .table td {
+        padding: 6px 4px;
+    }
+    
+    /* IMAGEN: Ajustar tamaño en móviles pequeños */
+    .table td:nth-child(1) {
+        min-width: 40px;
+        max-width: 50px;
+    }
+    
+    .table img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Ocultar tipo en móviles pequeños */
+    .table th:nth-child(6),
+    .table td:nth-child(6) {
+        display: none;
+    }
+    
+    /* Mostrar categoría pero compacta */
+    .table th:nth-child(5),
+    .table td:nth-child(5) {
+        display: table-cell;
+        max-width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .btn-edit,
+    .btn-delete {
+        padding: 5px 8px;
+        font-size: 0.75rem;
+        min-height: 32px;
+    }
+    
+    .list-section h2 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Para pantallas muy estrechas (menos de 400px) */
+@media (max-width: 400px) {
+    .table {
+        min-width: 500px;
+    }
+    
+    .table td:nth-child(1) {
+        min-width: 35px;
+    }
+    
+    .table img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .table td:nth-child(2) { /* Nombre */
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .table td:nth-child(3) { /* Precio */
+        font-size: 0.75rem;
+    }
+}
+
+/* Mejoras específicas para elementos táctiles */
+@media (max-width: 768px) {
+    .btn {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+    
+    .btn:active {
+        transform: scale(0.95);
+    }
+    
+    .form-control {
+        min-height: 48px;
+    }
+    
+    input[type="file"] {
+        min-height: 48px;
+        padding: 12px;
+    }
+    
+    /* Mejorar scroll en móviles */
+    .tabla-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) #f1f1f1;
+        -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    }
+    
+    .tabla-scroll::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .tabla-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+    
+    .tabla-scroll::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 3px;
+    }
+    
+    /* Mejorar visualización de imágenes en tabla móvil */
+    .table img {
+        border-radius: 3px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border: 1px solid #ddd;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas (< 380px) */
+@media (max-width: 380px) {
+    .admin-nav h1 {
+        font-size: 1.1rem;
+    }
+    
+    .admin-nav .btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
+    .form-section, 
+    .list-section {
+        padding: 0.875rem;
+    }
+    
+    .form-section h2,
+    .list-section h2 {
+        font-size: 1.1rem;
+    }
+    
+    .form-label {
+        font-size: 0.85rem;
+    }
+    
+    .form-control {
+        padding: 8px;
+        font-size: 13px;
+    }
+    
+    .info-imagen {
+        font-size: 0.7rem;
+    }
+    
+    .btn-primary,
+    .Dbtn-cancel {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .table {
+        font-size: 0.75rem;
+        min-width: 450px;
+    }
+    
+    .table th, 
+    .table td {
+        padding: 4px 3px;
+    }
+    
+    .table img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .btn-edit,
+    .btn-delete {
+        font-size: 0.7rem;
+        padding: 4px 6px;
+        min-height: 28px;
+    }
+    
+    .badge {
+        font-size: 0.7rem;
+        padding: 2px 4px;
+    }
+}
+
+/* Optimización para orientación landscape en móviles */
+@media (max-height: 500px) and (max-width: 768px) {
+    .admin-main {
+        margin: 0.5rem auto;
+    }
+    
+    .form-section, 
+    .list-section {
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .form-section > form > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.5rem;
+    }
+    
+    .tabla-scroll {
+        max-height: 250px;
+    }
+    
+    /* Mostrar más columnas en landscape */
+    .table th:nth-child(5),
+    .table td:nth-child(5),
+    .table th:nth-child(6),
+    .table td:nth-child(6) {
+        display: table-cell !important;
+    }
+    
+    .table {
+        min-width: 700px;
+    }
+}
+
+/* Mejoras de accesibilidad */
+@media (max-width: 768px) {
+    .btn:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+    }
+    
+    .form-control:focus {
+        border-width: 2px;
+    }
+    
+    input[type="file"]:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 1px;
+    }
+    
+    .table th {
+        font-weight: 600;
+        background: #e9ecef;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+}
+
+/* Animaciones suaves para vista previa de imágenes */
+@media (max-width: 768px) {
+    .imagen-preview {
+        transition: all 0.3s ease;
+    }
+    
+    #preview-container {
+        animation: fadeIn 0.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+/* Ajustes específicos para textarea */
+@media (max-width: 768px) {
+    textarea.form-control {
+        min-height: 100px;
+        font-size: 14px;
+    }
+}
+
+/* Asegurar que las imágenes en tabla siempre sean visibles */
+@media (max-width: 1024px) {
+    .table td:nth-child(1) img {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+/* Clase específica para imágenes de tabla en móviles */
+.imagen-tabla-movil {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}

@@ -1,0 +1,552 @@
+/* ===== RESPONSIVE PERFIL USUARIO ===== */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .profile-header {
+        margin-top: 90px;
+        padding: 1.5rem 0;
+    }
+    
+    .page-title {
+        font-size: 2.2rem;
+    }
+    
+    .welcome-message {
+        font-size: 1rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .stat-card {
+        padding: 1.25rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .info-section,
+    .pedidos-section {
+        padding: 1.5rem;
+    }
+    
+    .pedidos-scroll {
+        max-height: 350px;
+        padding-right: 10px;
+    }
+}
+
+/* Móviles grandes (576px - 768px) */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .profile-header {
+        margin-top: 120px;
+        padding: 1.5rem 0;
+        text-align: center;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .welcome-message {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .info-section,
+    .pedidos-section {
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .info-item {
+        gap: 0.25rem;
+    }
+    
+    .info-label {
+        font-size: 0.9rem;
+    }
+    
+    .info-value {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .edit-input,
+    .edit-textarea,
+    .edit-select {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .pedido-card {
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .pedido-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .pedido-id {
+        font-size: 1rem;
+    }
+    
+    .estado {
+        align-self: flex-start;
+    }
+    
+    .pedido-info {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .info-line {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .info-line strong {
+        font-size: 0.85rem;
+    }
+    
+    .info-line span {
+        font-size: 0.8rem;
+        text-align: right;
+    }
+    
+    .actions {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+    
+    .btn-primary,
+    .btn-cancel,
+    .btn-edit {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+    }
+    
+    /* Scroll independiente para pedidos */
+    .pedidos-scroll {
+        max-height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 10px;
+        margin-bottom: 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 1rem;
+        background: #f9f9f9;
+    }
+    
+    .no-pedidos {
+        padding: 2rem 1rem;
+    }
+    
+    .no-pedidos h3 {
+        font-size: 1.2rem;
+    }
+    
+    .no-pedidos p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Móviles pequeños (< 576px) */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .profile-header {
+        margin-top: 70px;
+        padding: 1rem 0;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .welcome-message {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .stat-card {
+        padding: 0.75rem;
+    }
+    
+    .stat-number {
+        font-size: 1.3rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+    
+    .info-section,
+    .pedidos-section {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .info-item {
+        margin-bottom: 0.5rem;
+    }
+    
+    .info-label {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .info-value {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .edit-input,
+    .edit-textarea,
+    .edit-select {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .edit-textarea {
+        min-height: 60px;
+    }
+    
+    .pedido-card {
+        padding: 0.75rem;
+    }
+    
+    .pedido-header {
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .pedido-id {
+        font-size: 0.95rem;
+    }
+    
+    .estado {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+    
+    .info-line {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .info-line strong,
+    .info-line span {
+        width: 100%;
+        text-align: left;
+    }
+    
+    .info-line span {
+        font-size: 0.75rem;
+    }
+    
+    .actions {
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    
+    .btn-primary,
+    .btn-cancel,
+    .btn-edit {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+        min-width: auto;
+    }
+    
+    .no-pedidos {
+        padding: 1.5rem 1rem;
+    }
+    
+    .no-pedidos .btn {
+        width: 100%;
+    }
+    
+    /* Altura más pequeña para móviles pequeños */
+    .pedidos-scroll {
+        max-height: 250px;
+        padding: 0.75rem;
+    }
+}
+
+/* Ajustes específicos para elementos táctiles */
+@media (max-width: 768px) {
+    .btn-primary,
+    .btn-cancel,
+    .btn-edit,
+    .estado {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cart-count {
+        min-width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .edit-input,
+    .edit-textarea,
+    .edit-select {
+        min-height: 44px;
+    }
+    
+    .edit-textarea {
+        min-height: 88px;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 380px) {
+    .profile-header {
+        margin-top: 150px;
+        padding: 0.75rem 0;
+    }
+    
+    .page-title {
+        font-size: 1.6rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stat-card:last-child {
+        grid-column: 1 / -1;
+    }
+    
+    .info-section,
+    .pedidos-section {
+        padding: 0.75rem;
+    }
+    
+    .pedido-card {
+        padding: 0.5rem;
+    }
+    
+    .pedido-id {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+    }
+    
+    /* Altura más pequeña para pantallas muy pequeñas */
+    .pedidos-scroll {
+        max-height: 200px;
+    }
+}
+
+/* Mejoras de legibilidad en móviles */
+@media (max-width: 768px) {
+    .welcome-message {
+        line-height: 1.5;
+    }
+    
+    .info-value {
+        line-height: 1.4;
+    }
+    
+    .pedido-info {
+        font-size: 0.85rem;
+    }
+}
+
+/* Estados interactivos para móviles */
+@media (max-width: 768px) {
+    .btn-primary:active,
+    .btn-cancel:active,
+    .btn-edit:active {
+        transform: scale(0.98);
+    }
+    
+    .pedido-card {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .pedido-card:active {
+        transform: scale(0.99);
+    }
+}
+
+/* Scroll suave para secciones de pedidos */
+@media (max-width: 768px) {
+    .pedidos-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) #f1f1f1;
+    }
+    
+    .pedidos-scroll::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .pedidos-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+    
+    .pedidos-scroll::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 3px;
+    }
+    
+    .pedidos-scroll::-webkit-scrollbar-thumb:hover {
+        background: #23421f;
+    }
+    
+    /* Ocultar scrollbar cuando no hay scroll */
+    .pedidos-scroll:not(:has(.pedidos-list)) {
+        scrollbar-width: none;
+    }
+    
+    .pedidos-scroll:not(:has(.pedidos-list))::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Ajustes específicos para landscape en móviles */
+@media (max-height: 500px) and (max-width: 768px) {
+    .profile-header {
+        margin-top: 100px;
+        padding: 0.75rem 0;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.25rem;
+    }
+    
+    .stat-card {
+        padding: 0.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.2rem;
+    }
+    
+    /* Menos altura en landscape */
+    .pedidos-scroll {
+        max-height: 200px;
+    }
+    
+    .info-section,
+    .pedidos-section {
+        padding: 1rem;
+    }
+}
+
+/* Ajuste para cuando no hay pedidos */
+@media (max-width: 768px) {
+    .pedidos-scroll:has(.no-pedidos) {
+        max-height: none;
+        overflow: visible;
+        border: none;
+        background: transparent;
+    }
+}
+
+/* Ajustes para formulario de edición en móviles */
+@media (max-width: 768px) {
+    #edit-view {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    #edit-view .actions {
+        grid-column: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        /* Asegura que el contenido se distribuya correctamente */
+        justify-content: flex-start;
+    }
+    
+    .hamburger {
+        order: 2; /* Coloca el botón al final */
+        margin-left: auto; /* Empuja a la derecha */
+    }
+    
+    .logo {
+        order: 1; /* Logo primero */
+        margin-right: auto; /* Lo mantiene a la izquierda */
+    }
+}

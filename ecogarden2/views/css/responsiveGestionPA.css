@@ -1,0 +1,536 @@
+/* ===== RESPONSIVE GESTIONAR PEDIDOS ADMIN ===== */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .admin-main {
+        margin: 1.5rem auto;
+        padding: 0 15px;
+    }
+    
+    .pedidos-section {
+        padding: 1.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.875rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 1.25rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .table th, 
+    .table td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+    
+    .tabla-scroll {
+        max-height: 400px;
+    }
+    
+    .estado-form {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    .select-estado {
+        width: 100%;
+    }
+    
+    .btn-primary {
+        width: 100%;
+    }
+}
+
+/* Móviles grandes (576px - 768px) */
+@media (max-width: 768px) {
+    .admin-nav {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 0 15px;
+    }
+    
+    .admin-main {
+        margin: 1rem auto;
+        padding: 0 10px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.6rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .pedidos-section {
+        padding: 1.25rem;
+        margin: 0 0.25rem;
+    }
+    
+    .pedidos-section h2 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    /* Ocultar columnas menos importantes en tablets */
+    .table thead th:nth-child(2),
+    .table tbody td:nth-child(2),
+    .table thead th:nth-child(4),
+    .table tbody td:nth-child(4) {
+        display: none;
+    }
+    
+    .tabla-scroll {
+        max-height: 500px;
+        border: none;
+    }
+    
+    .table {
+        font-size: 0.85rem;
+    }
+    
+    .table th, 
+    .table td {
+        padding: 8px 6px;
+    }
+    
+    .estado-form {
+        gap: 0.375rem;
+    }
+    
+    .select-estado {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+    
+    .btn-primary {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        min-height: 36px;
+    }
+    
+    .detalle-toggle {
+        font-size: 0.75rem;
+        margin-top: 0.25rem;
+        display: block;
+        text-align: center;
+    }
+    
+    .cliente-info {
+        font-size: 0.75rem;
+    }
+    
+    .alert {
+        padding: 0.875rem;
+        font-size: 0.9rem;
+        margin: 0 0.25rem 1rem 0.25rem;
+    }
+    
+    /* Ajustar filas de detalles */
+    .pedido-detalle {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .pedido-detalle h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .pedido-detalle ul {
+        padding-left: 1rem;
+        margin: 0.5rem 0;
+    }
+    
+    .pedido-detalle li {
+        margin-bottom: 0.25rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Móviles pequeños (< 576px) */
+@media (max-width: 576px) {
+    .admin-header {
+        padding: 0.75rem 0;
+    }
+    
+    .admin-nav {
+        gap: 0.75rem;
+        padding: 0 10px;
+    }
+    
+    .admin-nav h1 {
+        font-size: 1.3rem;
+    }
+    
+    .admin-main {
+        margin: 0.75rem auto;
+        padding: 0 5px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.625rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stat-card {
+        padding: 0.875rem;
+    }
+    
+    .stat-number {
+        font-size: 1.4rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+    
+    .pedidos-section {
+        padding: 1rem;
+        margin: 0 0.125rem;
+    }
+    
+    .pedidos-section h2 {
+        font-size: 1.2rem;
+    }
+    
+    /* Ocultar más columnas en móviles */
+    .table thead th:nth-child(2),
+    .table tbody td:nth-child(2),
+    .table thead th:nth-child(3),
+    .table tbody td:nth-child(3),
+    .table thead th:nth-child(4),
+    .table tbody td:nth-child(4) {
+        display: none;
+    }
+    
+    /* Mostrar información adicional en la primera columna */
+    .table tbody td:first-child {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .cliente-info {
+        font-size: 0.7rem;
+    }
+    
+    .tabla-scroll {
+        max-height: 400px;
+        margin-top: 0.5rem;
+    }
+    
+    .table {
+        font-size: 0.8rem;
+    }
+    
+    .table th, 
+    .table td {
+        padding: 6px 4px;
+    }
+    
+    .badge {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+    
+    .estado-form {
+        gap: 0.25rem;
+    }
+    
+    .select-estado {
+        font-size: 0.75rem;
+        padding: 6px;
+    }
+    
+    .btn-primary {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+        min-height: 32px;
+    }
+    
+    .detalle-toggle {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        border: 1px solid var(--primary-color);
+        border-radius: 4px;
+        background: var(--white);
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+}
+
+/* Mejoras específicas para elementos táctiles */
+@media (max-width: 768px) {
+    .btn {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+    
+    .btn:active {
+        transform: scale(0.95);
+    }
+    
+    .select-estado {
+        min-height: 44px;
+    }
+    
+    .stat-card {
+        transition: all 0.2s ease;
+    }
+    
+    .stat-card:active {
+        transform: scale(0.98);
+        background-color: #f8f8f8;
+    }
+    
+    .detalle-toggle:active {
+        background-color: var(--primary-color);
+        color: var(--white);
+    }
+    
+    /* Mejorar scroll en móviles */
+    .tabla-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) #f1f1f1;
+    }
+    
+    .tabla-scroll::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .tabla-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+    
+    .tabla-scroll::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 3px;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 380px) {
+    .admin-nav h1 {
+        font-size: 1.1rem;
+    }
+    
+    .admin-nav .btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .stat-card {
+        padding: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+    
+    .stat-number {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+    }
+    
+    .stat-label {
+        margin-top: 0;
+        font-size: 0.7rem;
+    }
+    
+    .pedidos-section {
+        padding: 0.875rem;
+    }
+    
+    .pedidos-section h2 {
+        font-size: 1.1rem;
+    }
+    
+    .table {
+        font-size: 0.75rem;
+    }
+    
+    .table th, 
+    .table td {
+        padding: 4px 3px;
+    }
+    
+    .cliente-info {
+        font-size: 0.65rem;
+    }
+    
+    .estado-form {
+        gap: 0.2rem;
+    }
+    
+    .select-estado {
+        font-size: 0.7rem;
+        padding: 4px;
+    }
+    
+    .btn-primary {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+        min-height: 28px;
+    }
+    
+    .badge {
+        font-size: 0.65rem;
+        padding: 2px 4px;
+    }
+    
+    .detalle-toggle {
+        font-size: 0.65rem;
+        padding: 3px 6px;
+    }
+    
+    .pedido-detalle {
+        padding: 0.5rem;
+        font-size: 0.7rem;
+    }
+    
+    .pedido-detalle h4 {
+        font-size: 0.8rem;
+    }
+    
+    .pedido-detalle li {
+        font-size: 0.65rem;
+    }
+}
+
+/* Estados hover mejorados para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+}
+
+/* Optimización para orientación landscape en móviles */
+@media (max-height: 500px) and (max-width: 768px) {
+    .admin-main {
+        margin: 0.5rem auto;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stat-card {
+        padding: 0.5rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 1.2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+    }
+    
+    .tabla-scroll {
+        max-height: 250px;
+    }
+    
+    .pedidos-section {
+        padding: 0.75rem;
+    }
+    
+    /* Mostrar más columnas en landscape */
+    .table thead th:nth-child(2),
+    .table tbody td:nth-child(2),
+    .table thead th:nth-child(4),
+    .table tbody td:nth-child(4) {
+        display: table-cell;
+    }
+}
+
+/* Mejoras de accesibilidad */
+@media (max-width: 768px) {
+    .btn:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+    }
+    
+    .select-estado:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 1px;
+    }
+    
+    .detalle-toggle:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 1px;
+    }
+    
+    .table th {
+        font-weight: 600;
+        background: #e9ecef;
+    }
+}
+
+/* Animaciones suaves para detalles */
+@media (max-width: 768px) {
+    .pedido-detalle {
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            max-height: 0;
+        }
+        to {
+            opacity: 1;
+            max-height: 500px;
+        }
+    }
+}
+
+/* Mejorar visualización de estados en móviles */
+@media (max-width: 576px) {
+    .badge {
+        display: block;
+        text-align: center;
+        margin: 0.25rem 0;
+    }
+}

@@ -1,0 +1,272 @@
+/* ===== RESPONSIVE CATALOGO USUARIO ===== */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .filtros-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .productos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .catalogo-header {
+        margin-top: 100px;  /* Ajustado */
+        padding: 1.5rem 0;
+    }
+}
+
+/* Móviles grandes (576px - 768px) */
+@media (max-width: 768px) {
+    /* ELIMINA O COMENTA ESTAS REGLAS DEL NAV:
+    .nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    */
+    
+    .catalogo-header {
+        margin-top: 90px;  /* Reducido */
+        padding: 1.5rem 0;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .filtros-section {
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .filtros-grid {
+        gap: 1rem;
+    }
+    
+    .categorias-filtro {
+        justify-content: center;
+    }
+    
+    .search-box {
+        flex-direction: column;
+    }
+    
+    .search-input {
+        width: 100%;
+    }
+    
+    .productos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.25rem;
+    }
+    
+    .producto-card {
+        margin-bottom: 0.5rem;
+    }
+    
+    .producto-imagen {
+        height: 180px;
+        padding: 10px;
+    }
+    
+    .producto-info {
+        padding: 1.25rem;
+    }
+    
+    .producto-nombre {
+        font-size: 1.1rem;
+    }
+    
+    .producto-precio {
+        font-size: 1.3rem;
+    }
+    
+    .producto-acciones {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-sm {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Móviles pequeños (< 576px) */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    /* ELIMINA O COMENTA:
+    .nav-links {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    */
+    
+    .catalogo-header {
+        margin-top: 90px;  /* Reducido */
+        padding: 1rem 0;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .filtros-section {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .categorias-filtro {
+        gap: 0.5rem;
+    }
+    
+    .categoria-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .productos-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .producto-imagen {
+        height: 160px;
+    }
+    
+    .producto-info {
+        padding: 1rem;
+    }
+    
+    .producto-nombre {
+        font-size: 1rem;
+    }
+    
+    .producto-descripcion {
+        font-size: 0.85rem;
+        min-height: 35px;
+    }
+    
+    .producto-precio {
+        font-size: 1.2rem;
+    }
+    
+    .no-products {
+        padding: 2rem 1rem;
+    }
+    
+    .no-products h3 {
+        font-size: 1.3rem;
+    }
+    
+    .no-products .btn {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+/* Mejoras específicas para filtros en móviles */
+@media (max-width: 768px) {
+    .filtros-grid > div:first-child {
+        text-align: center;
+    }
+    
+    .filtros-grid h3 {
+        margin-bottom: 0.75rem;
+    }
+    
+    .search-box form {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .search-box .btn {
+        width: 100%;
+    }
+}
+
+/* Mejoras de legibilidad en móviles */
+@media (max-width: 768px) {
+    .producto-nombre {
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
+    }
+    
+    .producto-descripcion {
+        line-height: 1.4;
+        margin-bottom: 0.75rem;
+    }
+    
+    .producto-stock {
+        margin-bottom: 0.75rem;
+    }
+}
+
+/* Scroll mejorado para móviles */
+@media (max-width: 768px) {
+    .productos-scroll {
+        max-height: none;
+        overflow-y: visible;
+        padding-right: 0;
+    }
+}
+
+/* Botones táctiles específicos del catálogo */
+@media (max-width: 768px) {
+    .categoria-btn,
+    .producto-acciones .btn,
+    .search-box .btn {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .producto-acciones .btn {
+        padding: 10px;
+    }
+}
+
+/* Mejoras visuales para imágenes en móviles */
+@media (max-width: 768px) {
+    .producto-imagen img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 380px) {
+    .producto-card {
+        margin: 0 0.25rem;
+    }
+    
+    .producto-info {
+        padding: 0.75rem;
+    }
+    
+    .producto-acciones {
+        gap: 0.25rem;
+    }
+}
+
+/* ELIMINA ESTA REGLA FINAL (opcional):
+@media (max-width: 768px) {
+    .productos-scroll {
+        height: calc(100vh - 300px);
+        overflow-y: auto;
+    }
+}
+*/

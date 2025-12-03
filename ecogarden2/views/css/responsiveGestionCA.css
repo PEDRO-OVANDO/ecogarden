@@ -1,0 +1,373 @@
+/* ===== RESPONSIVE GESTIONAR CLIENTES ADMIN ===== */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .admin-main {
+        margin: 1.5rem auto;
+        padding: 0 15px;
+    }
+    
+    .clientes-section {
+        padding: 1.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.875rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 1.25rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .table th, 
+    .table td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+    
+    .tabla-scroll {
+        max-height: 400px;
+    }
+}
+
+/* Móviles grandes (576px - 768px) */
+@media (max-width: 768px) {
+    .admin-nav {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 0 15px;
+    }
+    
+    .admin-main {
+        margin: 1rem auto;
+        padding: 0 10px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem; /*NUEVO*/
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .clientes-section {
+        padding: 1.25rem;
+        margin: 0 0.25rem;
+    }
+    
+    .clientes-section h2 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    /* Ocultar columnas menos importantes en tablets */
+    .table thead th:nth-child(3),
+    .table tbody td:nth-child(3),
+    .table thead th:nth-child(4),
+    .table tbody td:nth-child(4) {
+        display: none;
+    }
+    
+    .tabla-scroll {
+        max-height: 500px;
+        border: none;
+    }
+    
+    .table {
+        font-size: 0.85rem;
+    }
+    
+    .table th, 
+    .table td {
+        padding: 8px 6px;
+    }
+    
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .alert {
+        padding: 0.875rem;
+        font-size: 0.9rem;
+        margin: 0 0.25rem 1rem 0.25rem;
+    }
+}
+
+/* Móviles pequeños (< 576px) */
+@media (max-width: 576px) {
+    .admin-header {
+        padding: 0.75rem 0;
+    }
+    
+    .admin-nav {
+        gap: 0.75rem;
+        padding: 0 10px;
+    }
+    
+    .admin-nav h1 {
+        font-size: 1.3rem;
+    }
+    
+    .admin-main {
+        margin: 0.75rem auto;
+        padding: 0 5px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.625rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stat-card {
+        padding: 0.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100px;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .stat-label {
+        margin-top: 0;
+        font-size: 0.85rem;
+    }
+    
+    .clientes-section {
+        padding: 1rem;
+        margin: 0 0.125rem;
+    }
+    
+    .clientes-section h2 {
+        font-size: 1.2rem;
+    }
+    
+    /* Ocultar más columnas en móviles */
+    .table thead th:nth-child(2),
+    .table tbody td:nth-child(2),
+    .table thead th:nth-child(3),
+    .table tbody td:nth-child(3),
+    .table thead th:nth-child(4),
+    .table tbody td:nth-child(4) {
+        display: none;
+    }
+    
+    /* Mostrar información adicional en la primera columna */
+    .table tbody td:first-child {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .cliente-info {
+        font-size: 0.75rem;
+    }
+    
+    .tabla-scroll {
+        max-height: 400px;
+        margin-top: 0.5rem;
+    }
+    
+    .table {
+        font-size: 0.8rem;
+    }
+    
+    .table th, 
+    .table td {
+        padding: 6px 4px;
+    }
+    
+    .acciones {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        min-height: 32px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .btn-danger,
+    .btn-submit {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+    }
+}
+
+/* Mejoras específicas para elementos táctiles */
+@media (max-width: 768px) {
+    .btn {
+        min-height: 44px;
+        transition: all 0.2s ease;
+    }
+    
+    .btn:active {
+        transform: scale(0.95);
+    }
+    
+    .stat-card {
+        transition: all 0.2s ease;
+    }
+    
+    .stat-card:active {
+        transform: scale(0.98);
+        background-color: #f8f8f8;
+    }
+    
+    /* Mejorar scroll en móviles */
+    .tabla-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) #f1f1f1;
+    }
+    
+    .tabla-scroll::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .tabla-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+    
+    .tabla-scroll::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 3px;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 380px) {
+    .admin-nav h1 {
+        font-size: 1.1rem;
+    }
+    
+    .admin-nav .btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
+    .stats-grid {
+        gap: 0.5rem;
+    }
+    
+    .stat-card {
+        padding: 0.875rem;
+    }
+    
+    .stat-number {
+        font-size: 1.3rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .clientes-section {
+        padding: 0.875rem;
+    }
+    
+    .clientes-section h2 {
+        font-size: 1.1rem;
+    }
+    
+    .table {
+        font-size: 0.75rem;
+    }
+    
+    .table th, 
+    .table td {
+        padding: 4px 3px;
+    }
+    
+    .cliente-info {
+        font-size: 0.7rem;
+    }
+}
+
+/* Estados hover mejorados para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+}
+
+/* Optimización para orientación landscape en móviles */
+@media (max-height: 500px) and (max-width: 768px) {
+    .admin-main {
+        margin: 0.5rem auto;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stat-card {
+        padding: 0.75rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .tabla-scroll {
+        max-height: 250px;
+    }
+    
+    .clientes-section {
+        padding: 0.75rem;
+    }
+}
+
+/* Mejoras de accesibilidad */
+@media (max-width: 768px) {
+    .btn:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+    }
+    
+    .table th {
+        font-weight: 600;
+        background: #e9ecef;
+    }
+}
+

@@ -1,0 +1,572 @@
+<?php
+session_start();
+
+//inicializar carrito si no existe
+if (!isset($_SESSION['carrito'])) {
+    $_SESSION['carrito'] = [];
+}
+
+require_once '../../config/database.php';
+
+class CarritoController {
+    private $conexion;
+    
+    public function __construct($conexion) {
+        $this->conexion = $conexion;
+    }
+    
+    public function agregarProducto($producto_id, $cantidad = 1) {
+        //verificar que el producto existe y tiene stock
+        $sql = "SELECT id, nombre, precio, stock FROM productos WHERE id = $producto_id AND activo = 1";
+        $result = mysqli_query($this->conexion, $sql);
+        
+        if (!$result || mysqli_num_rows($result) == 0) {
+            return ["error" => "Producto no encontrado"];
+        }
+        
+        $producto = mysqli_fetch_assoc($result);
+        
+        if ($producto['stock'] < $cantidad) {
+            return ["error" => "Stock insuficiente. Solo hay {$producto['stock']} disponibles"];
+        }
+        
+        //agregar al carrito
+        if (isset($_SESSION['carrito'][$producto_id])) {
+            $_SESSION['carrito'][$producto_id]['cantidad'] += $cantidad;
+        } else {
+            $_SESSION['carrito'][$producto_id] = [
+                'id' => $producto['id'],
+                'nombre' => $producto['nombre'],
+                'precio' => $producto['precio'],
+                'cantidad' => $cantidad
+            ];
+        }
+        
+        return ["success" => "Producto agregado al carrito"];
+    }
+    
+    public function eliminarProducto($producto_id) {
+        if (isset($_SESSION['carrito'][$producto_id])) {
+            unset($_SESSION['carrito'][$producto_id]);
+            return ["success" => "Producto eliminado del carrito"];
+        }
+        return ["error" => "Producto no encontrado en el carrito"];
+    }
+    
+    public function actualizarCantidad($producto_id, $cantidad) {
+        if ($cantidad <= 0) {
+            return $this->eliminarProducto($producto_id);
+        }
+        
+        if (isset($_SESSION['carrito'][$producto_id])) {
+            $_SESSION['carrito'][$producto_id]['cantidad'] = $cantidad;
+            return ["success" => "Cantidad actualizada"];
+        }
+        return ["error" => "Producto no encontrado en el carrito"];
+    }
+    
+    public function obtenerCarrito() {
+        return $_SESSION['carrito'];
+    }
+    
+    public function obtenerTotal() {
+        $total = 0;
+        foreach ($_SESSION['carrito'] as $item) {
+            $total += $item['precio'] * $item['cantidad'];
+        }
+        return $total;
+    }
+    
+    public function vaciarCarrito() {
+        $_SESSION['carrito'] = [];
+        return ["success" => "Carrito vaciado"];
+    }
+    
+    public function getCantidadTotal() {
+        $total = 0;
+        foreach ($_SESSION['carrito'] as $item) {
+            $total += $item['cantidad'];
+        }
+        return $total;
+    }
+}
+
+$carritoController = new CarritoController($conexion);
+$mensaje = '';
+
+//procesar acciones del carrito desde POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'] ?? '';
+    $producto_id = $_POST['producto_id'] ?? '';
+    
+    switch ($action) {
+        case 'actualizar':
+            $cantidad = intval($_POST['cantidad']);
+            $resultado = $carritoController->actualizarCantidad($producto_id, $cantidad);
+            break;
+        case 'eliminar':
+            $resultado = $carritoController->eliminarProducto($producto_id);
+            break;
+        case 'vaciar':
+            $resultado = $carritoController->vaciarCarrito();
+            break;
+    }
+    
+    if (isset($resultado['success'])) {
+        $mensaje = $resultado['success'];
+    }
+}
+
+//procesar agregar producto desde GET
+if (isset($_GET['agregar'])) {
+    $producto_id = intval($_GET['agregar']);
+    $cantidad = isset($_GET['cantidad']) ? intval($_GET['cantidad']) : 1;
+    $resultado = $carritoController->agregarProducto($producto_id, $cantidad);
+    
+    if (isset($resultado['success'])) {
+        $mensaje = $resultado['success'];
+        //redirigir para evitar reenvio del formulario
+        header("Location: carrito.php");
+        exit;
+    } else {
+        $mensaje = $resultado['error'];
+    }
+}
+
+$carrito = $carritoController->obtenerCarrito();
+$total = $carritoController->obtenerTotal();
+$total_items = $carritoController->getCantidadTotal();
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - EcoGarden</title>
+    <style>
+        :root {
+            --primary-color: #2d5a27;
+            --secondary-color: #4CAF50;
+            --accent-color: #ff6b35;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Century Gothic', Arial, sans-serif; background: var(--light-bg);}
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        .cart-count {
+            background: var(--accent-color);
+            color: var(--white);
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+                
+        /*contenido principal*/
+        .carrito-header {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+        
+        .page-title {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /*alertas*/
+        .alert {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        /*carrito*/
+        .carrito-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .carrito-vacio {
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .carrito-items {
+            margin-bottom: 2rem;
+        }
+        
+        .carrito-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            gap: 1rem;
+        }
+        
+        .item-info h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .item-precio {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .item-cantidad {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cantidad-input {
+            width: 60px;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .item-subtotal {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .carrito-total {
+            text-align: right;
+            padding: 1.5rem;
+            border-top: 2px solid #eee;
+        }
+        
+        .total-monto {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .carrito-acciones {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background: #23421f;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: var(--white);
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: var(--white);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .login-required {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* ===== MENU HAMBURGUESA SOLO PARA MOVIL ===== */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* sidebar */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -260px;
+            width: 260px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+            padding: 2rem 1rem;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 2000;
+        }
+
+        .mobile-menu a {
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        /* fondo oscuro */
+        .menu-overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 1500;
+        }
+
+        .menu-overlay.show {
+            display: block;
+        }
+
+        /* Mostrar hamburguesa y ocultar menú normal en móvil */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../../public/index.php" class="logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>EcoGarden</span>
+                </a>
+
+                <!-- Botón Hamburguesa (solo móvil) -->
+                <div class="hamburger" id="hamburgerBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <div class="nav-links">
+                    <a href="../../public/index.php" class="nav-link">Inicio</a>
+                    <a href="../productos/catalogo.php" class="nav-link">Productos</a>
+                    <a href="carrito.php" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        Carrito <span class="cart-count"><?php echo $total_items; ?></span>
+                    </a>  
+                    <a href="../clientes/login.php" class="nav-link">Ingresar</a>
+                </div>
+
+                <!-- Menú lateral móvil -->
+                <div class="mobile-menu" id="mobileMenu">
+                    <a href="../../public/index.php" class="nav-link">Inicio</a>
+                    <a href="../productos/catalogo.php" class="nav-link" style="color: var(--primary-color);">Productos</a>
+                    <a href="carrito.php" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        Carrito <span class="cart-count"><?php echo $total_items; ?></span>
+                    </a>
+                    <a href="../clientes/login.php" class="nav-link">Ingresar</a>
+                </div>
+                <div class="menu-overlay" id="menuOverlay"></div>
+            </nav>
+        </div>
+    </header>
+
+    <!--contenido principal-->
+    <main class="container">
+        <div class="carrito-header">
+            <h1 class="page-title">Carrito de Compras</h1>
+        </div>
+
+        <?php if ($mensaje): ?>
+            <div class="alert alert-success"><?php echo $mensaje; ?></div>
+        <?php endif; ?>
+
+        <section class="carrito-section">
+            <?php if (empty($carrito)): ?>
+                <div class="carrito-vacio">
+                    <h3>Tu carrito está vacío</h3>
+                    <p>¡Descubre nuestros productos para tu jardín!</p>
+                    <a href="../productos/catalogo.php" class="btn btn-primary">Explorar Catálogo</a>
+                </div>
+            <?php else: ?>
+                <div class="carrito-items">
+                    <?php foreach ($carrito as $item): ?>
+                        <div class="carrito-item">
+                            <div class="item-info">
+                                <h4><?php echo htmlspecialchars($item['nombre']); ?></h4>
+                                <p class="item-precio">$<?php echo number_format($item['precio'], 2); ?> c/u</p>
+                            </div>
+                            
+                            <div class="item-cantidad">
+                                <form method="POST" style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="hidden" name="action" value="actualizar">
+                                    <input type="hidden" name="producto_id" value="<?php echo $item['id']; ?>">
+                                    <label>Cantidad:</label>
+                                    <input type="number" name="cantidad" value="<?php echo $item['cantidad']; ?>" 
+                                        min="1" class="cantidad-input">
+                                    <button type="submit" class="btn btn-outline">Actualizar</button>
+                                </form>
+                            </div>
+                            
+                            <div class="item-subtotal">
+                                $<?php echo number_format($item['precio'] * $item['cantidad'], 2); ?>
+                            </div>
+                            
+                            <form method="POST">
+                                <input type="hidden" name="action" value="eliminar">
+                                <input type="hidden" name="producto_id" value="<?php echo $item['id']; ?>">
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                
+                <div class="carrito-total">
+                    <h3>Total: <span class="total-monto">$<?php echo number_format($total, 2); ?></span></h3>
+                </div>
+                
+                <div class="carrito-acciones">
+                    <div>
+                        <form method="POST">
+                            <input type="hidden" name="action" value="vaciar">
+                            <button type="submit" class="btn btn-secondary">Vaciar Carrito</button>
+                        </form>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="../productos/catalogo.php" class="btn btn-outline">Seguir Comprando</a>
+                        
+                        
+                        <?php if (isset($_SESSION['loggedin'])): ?>
+                            <a href="../usuario/checkoutUsuario.php" class="btn btn-primary">Proceder al Pago</a>
+                        <?php else: ?>
+                            <a href="../clientes/login.php?redirect=checkout" class="btn btn-primary">
+                                Iniciar Sesión para Comprar
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                
+                <?php if (!isset($_SESSION['loggedin'])): ?>
+                    <div class="login-required">
+                        <strong>¿Primera vez comprando?</strong><br>
+                        Necesitas iniciar sesión para completar tu compra. 
+                        <a href="../clientes/registro.php">Regístrate aquí</a> si no tienes cuenta.
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
+        </section>
+    </main>
+
+    <script>
+    const hamburger = document.getElementById("hamburgerBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const overlay = document.getElementById("menuOverlay");
+
+    hamburger.addEventListener("click", () => {
+        mobileMenu.classList.add("open");
+        overlay.classList.add("show");
+    });
+
+    overlay.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        overlay.classList.remove("show");
+    });
+    </script>
+
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>

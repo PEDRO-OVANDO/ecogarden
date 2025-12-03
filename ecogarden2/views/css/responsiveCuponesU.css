@@ -1,0 +1,373 @@
+/* ===== RESPONSIVE CUPONES USUARIO ===== */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .cupones-grid {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)) !important;
+        gap: 1.25rem;
+    }
+    
+    .cupones-header {
+        margin-top: 90px;
+        padding: 1.5rem 0;
+    }
+    
+    .page-title {
+        font-size: 2.2rem;
+    }
+    
+    .cupon-card {
+        padding: 1.25rem;
+    }
+    
+    .cupon-valor {
+        font-size: 1.8rem;
+    }
+}
+
+/* Móviles grandes (576px - 768px) */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .cupones-header {
+        margin-top: 120px;
+        padding: 1.5rem 0;
+        text-align: center;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .cupones-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+    
+    .cupon-card {
+        padding: 1.25rem;
+        margin: 0 0.5rem;
+    }
+    
+    .cupon-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .cupon-codigo {
+        font-size: 1.1rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .cupon-valor {
+        font-size: 1.6rem;
+        margin: 0.75rem 0;
+    }
+    
+    .seccion-titulo {
+        font-size: 1.3rem;
+        text-align: center;
+        margin: 1.5rem 0 1rem 0;
+    }
+    
+    /* MODIFICACIÓN IMPORTANTE: Scroll independiente para cada sección */
+    .cupones-scroll {
+        max-height: 400px; /* Altura fija para scroll */
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 10px;
+        margin-bottom: 2rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 1rem;
+        background: #f9f9f9;
+    }
+    
+    .no-cupones {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Móviles pequeños (< 576px) */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .cupones-header {
+        margin-top: 70px;
+        padding: 1rem 0;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .page-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cupon-card {
+        padding: 1rem;
+        margin: 0 0.25rem;
+    }
+    
+    .cupon-header {
+        gap: 0.75rem;
+    }
+    
+    .cupon-codigo {
+        font-size: 1rem;
+        padding: 0.35rem 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .copiar-cupon {
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
+        background: var(--white);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--primary-color);
+    }
+    
+    .cupon-tipo {
+        align-self: flex-start;
+        font-size: 0.75rem;
+    }
+    
+    .cupon-valor {
+        font-size: 1.4rem;
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+    
+    .cupon-detalles {
+        padding: 0.75rem;
+    }
+    
+    .detalle-item {
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .detalle-label,
+    .detalle-value {
+        width: 100%;
+        text-align: left;
+    }
+    
+    .seccion-titulo {
+        font-size: 1.2rem;
+        margin: 1.25rem 0 0.75rem 0;
+    }
+    
+    .badge {
+        display: block;
+        margin: 0.25rem 0;
+        text-align: center;
+    }
+    
+    .no-cupones {
+        padding: 1.5rem 1rem;
+    }
+    
+    .btn {
+        padding: 12px 18px;
+        font-size: 0.95rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Altura más pequeña para móviles pequeños */
+    .cupones-scroll {
+        max-height: 350px;
+    }
+}
+
+/* Ajustes específicos para elementos táctiles */
+@media (max-width: 768px) {
+    .copiar-cupon,
+    .btn {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cart-count {
+        min-width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 380px) {
+    .cupon-card {
+        padding: 0.75rem;
+    }
+    
+    .cupon-codigo {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .cupon-valor {
+        font-size: 1.3rem;
+    }
+    
+    .page-title {
+        font-size: 1.6rem;
+    }
+    
+    .seccion-titulo {
+        font-size: 1.1rem;
+    }
+    
+    /* Altura más pequeña para pantallas muy pequeñas */
+    .cupones-scroll {
+        max-height: 300px;
+    }
+}
+
+/* Mejoras de legibilidad en móviles */
+@media (max-width: 768px) {
+    .cupon-descripcion {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    .detalle-item {
+        font-size: 0.85rem;
+    }
+    /*RECORDAR QUE POR ESTO ES QUE SE HACIA MAS PEQUEÑO EL ALTO DEL LOGO Y POR TANTO DEL HEADER*/
+    /*
+    .logo span {
+        font-size: 1.3rem;
+    }*/
+}
+
+/* Estados interactivos para móviles */
+@media (max-width: 768px) {
+    .copiar-cupon:active {
+        transform: scale(0.95);
+        background: var(--primary-color);
+        color: var(--white);
+    }
+    
+    .btn:active {
+        transform: scale(0.98);
+    }
+    
+    .cupon-card {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .cupon-card:active {
+        transform: scale(0.99);
+    }
+}
+
+/* Scroll suave para secciones de cupones */
+@media (max-width: 768px) {
+    .cupones-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: #f1f1f1;
+    }
+    
+    .cupones-scroll::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .cupones-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+    
+    .cupones-scroll::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 3px;
+    }
+    
+    /* Ocultar scrollbar cuando no hay scroll */
+    .cupones-scroll:not(:has(.cupones-grid)) {
+        scrollbar-width: none;
+    }
+    
+    .cupones-scroll:not(:has(.cupones-grid))::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Ajustes específicos para landscape en móviles */
+@media (max-height: 500px) and (max-width: 768px) {
+    .cupones-header {
+        margin-top: 100px;
+        padding: 1rem 0;
+    }
+    
+    .cupones-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem;
+    }
+    
+    .cupon-card {
+        padding: 0.75rem;
+    }
+    
+    /* Menos altura en landscape */
+    .cupones-scroll {
+        max-height: 250px;
+    }
+}
+
+/* Ajuste para cuando no hay cupones */
+@media (max-width: 768px) {
+    .cupones-scroll:has(.no-cupones) {
+        max-height: none;
+        overflow: visible;
+        border: none;
+        background: transparent;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        /* Asegura que el contenido se distribuya correctamente */
+        justify-content: flex-start;
+    }
+    
+    .hamburger {
+        order: 2; /* Coloca el botón al final */
+        margin-left: auto; /* Empuja a la derecha */
+    }
+    
+    .logo {
+        order: 1; /* Logo primero */
+        margin-right: auto; /* Lo mantiene a la izquierda */
+    }
+}

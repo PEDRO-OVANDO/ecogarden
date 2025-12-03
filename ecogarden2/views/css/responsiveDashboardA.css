@@ -1,0 +1,345 @@
+ /* ===== RESPONSIVE DASHBOARD ADMIN ===== */
+
+/* Tablets (768px - 1024px) - Sin cambios aquí, se ve bien */
+@media (max-width: 1024px) {
+    .admin-main {
+        margin: 1.5rem auto;
+        padding: 0 15px;
+    }
+    
+    .welcome-section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2.2rem;
+    }
+    
+    .actions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.875rem;
+    }
+    
+    .action-card {
+        padding: 1.25rem;
+    }
+}
+
+/* Móviles grandes (576px - 768px) - MODIFICACIÓN AQUÍ */
+@media (max-width: 768px) {
+    .admin-nav {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 0 15px;
+    }
+    
+    .admin-main {
+        margin: 1rem auto;
+        padding: 0 10px;
+    }
+    
+    .welcome-section {
+        padding: 1.25rem;
+        margin-bottom: 1.25rem;
+        text-align: center;
+    }
+    
+    .welcome-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .stats-grid {
+        /* MODIFICACIÓN: Mostrar 3 columnas, forzando el layout deseado */
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .stat-card {
+        padding: 1.25rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    /* MODIFICACIÓN: Mostrar 2 columnas y usar minmax */
+    .actions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    /* MODIFICACIÓN: Centrar el texto para que se parezca más al diseño de navegador */
+    .action-card {
+        padding: 1.5rem;
+        text-align: center; /* Cambiado de 'left' a 'center' */
+    }
+    
+    .btn {
+        padding: 12px 18px;
+        font-size: 0.95rem;
+        margin: 0.25rem;
+    }
+    
+    .btn-logout {
+        border-width: 1px;
+    }
+}
+
+/* Móviles pequeños (< 576px) - MODIFICACIÓN AQUÍ */
+@media (max-width: 576px) {
+    .admin-main {
+        margin: 0.75rem auto;
+        padding: 0 5px;
+    }
+    
+    .admin-nav {
+        gap: 0.75rem;
+        padding: 0 10px;
+    }
+    
+    .admin-nav h1 {
+        font-size: 1.3rem;
+    }
+    
+    .admin-main {
+        margin: 0.75rem auto;
+        padding: 0 5px;
+    }
+    
+    .welcome-section {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .welcome-section h2 {
+        font-size: 1.3rem;
+    }
+    
+    .welcome-section p {
+        font-size: 0.9rem;
+    }
+    
+    /* El grid de stats cambia a 1 columna */
+    stats-grid {
+        /* MODIFICACIÓN: Forzar 3 columnas en móviles pequeños, al igual que en 768px */
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+        /* Quitamos el display flex para evitar que el contenido se estire/centre demasiado */
+        /* display: flex; 
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; */
+        min-height: 120px;
+        /* Aseguramos que el texto esté centrado como en tu ejemplo de clientes */
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-card div:last-child {
+        font-size: 0.9rem;
+    }
+    
+    /* MODIFICACIÓN: Mostrar 2 columnas en móviles pequeños */
+    .actions-grid {
+        grid-template-columns: repeat(2, 1fr); /* Cambiado de 1fr a repeat(2, 1fr) */
+        gap: 0.625rem;
+    }
+    
+    .action-card {
+        padding: 1.25rem;
+        margin: 0 0.25rem;
+        /* Para que el texto quede centrado y la tarjeta se vea mejor */
+        text-align: center;
+    }
+    
+    .action-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .action-card p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+        /* MODIFICACIÓN: Comentado o eliminado width: 100% y text-align: center para que no fuerce el ancho completo si no es necesario */
+        /* width: 100%; */
+        /* text-align: center; */
+        margin: 0.25rem auto; /* Usar auto para centrar si es más pequeño */
+    }
+}
+
+/* Mejoras específicas para elementos táctiles */
+@media (max-width: 768px) {
+    .action-card {
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+    
+    .action-card:active {
+        transform: scale(0.98);
+        background-color: #f8f8f8;
+    }
+    
+    .btn {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .btn:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 380px) {
+    .admin-nav h1 {
+        font-size: 1.2rem;
+    }
+    
+    .welcome-section {
+        padding: 0.875rem;
+    }
+    
+    .welcome-section h2 {
+        font-size: 1.2rem;
+    }
+    
+    .stat-card {
+        padding: 0.875rem;
+        min-height: 100px;
+    }
+    
+    .stat-number {
+        font-size: 1.6rem;
+    }
+    
+    .action-card {
+        padding: 1rem;
+    }
+    
+    .action-card h3 {
+        font-size: 1rem;
+    }
+    
+    .action-card p {
+        font-size: 0.8rem;
+    }
+    
+    /* MODIFICACIÓN: Para pantallas muy pequeñas, podemos volver a 1 columna o mantener 2 si el contenido lo permite */
+    .actions-grid {
+        grid-template-columns: 1fr; /* Volvemos a 1 columna para 380px o menos */
+    }
+    
+    .btn {
+        width: 100%; /* El botón sí que ocupe todo el ancho de su tarjeta */
+    }
+}
+
+/* Mejoras de legibilidad en móviles */
+@media (max-width: 768px) {
+    .welcome-section h2 span {
+        display: block;
+        margin-top: 0.5rem;
+        color: var(--primary-color);
+        font-size: 1.3rem;
+    }
+    
+    .stat-card div:last-child {
+        font-weight: 600;
+        color: #666;
+    }
+}
+
+/* Estados hover mejorados para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .action-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+}
+
+/* Optimización para orientación landscape en móviles - MODIFICACIÓN AQUÍ */
+@media (max-height: 500px) and (max-width: 768px) {
+    .admin-main {
+        margin: 0.5rem auto;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .stat-card {
+        padding: 0.75rem;
+        min-height: auto;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    /* MODIFICACIÓN: Mantener 2 columnas para acciones en landscape, más espacio horizontal */
+    .actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .action-card {
+        padding: 1rem;
+        min-height: auto;
+    }
+}
+
+/* Scroll suave para contenido extenso */
+@media (max-width: 768px) {
+    .admin-main {
+        overflow-x: hidden;
+    }
+    
+    .stats-grid,
+    .actions-grid {
+        animation: fadeInUp 0.5s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
